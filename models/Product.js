@@ -26,27 +26,14 @@ Product.init(
         isDecimal: true,
       }
     },
-    // Maybe take it out.
-    // dimension: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-    // Color property was taken out. 
-    // Below: all primary key and autoIncrement have to be false except for the id. 
-    // Maybe take it out or put it in the description. 
-    // weight: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // },
     isAvailable: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: false,
     },
-    // Below: all primary key and autoIncrement have to be false except for the id. 
     category_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'category',
         key: 'id',
