@@ -14,4 +14,22 @@ const seedDatabase = async () => {
   process.exit(0);
 };
 
+const productData = require("./productData.json");
+
+await Product.bulkCreate(productData, {
+  returning: true, 
+});
+
+const categoryData = require("./categoryData.json");
+
+await Category.bulkCreate(categoryData, {
+  returning: true, 
+});
+
+const photoData = require("./photoData.json");
+
+await Photo.bulkCreate(photoData, {
+  returning: true, 
+});
+
 seedDatabase();
