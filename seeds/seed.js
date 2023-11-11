@@ -2,7 +2,11 @@ const sequelize = require('../config/connection');
 const { User, Product, Category, Photo } = require('../models');
 
 const userData = require('./userData.json');
-// Follow the duplication for photo, product and category. 
+const productData = require("./productData.json");
+const categoryData = require("./categoryData.json");
+const photoData = require("./photoData.json");
+ 
+
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
@@ -10,26 +14,15 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-// Duplicate line 9 without individual hooks for photo, product and category. 
+  await Product.bulkCreate(productData);
+
+  await Category.bulkCreate(categoryData);
+
+  await Photo.bulkCreate(photoData);
+  
   process.exit(0);
 };
 
-const productData = require("./productData.json");
 
-await Product.bulkCreate(productData, {
-  returning: true, 
-});
-
-const categoryData = require("./categoryData.json");
-
-await Category.bulkCreate(categoryData, {
-  returning: true, 
-});
-
-const photoData = require("./photoData.json");
-
-await Photo.bulkCreate(photoData, {
-  returning: true, 
-});
 
 seedDatabase();
