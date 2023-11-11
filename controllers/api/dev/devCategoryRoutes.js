@@ -1,12 +1,10 @@
 const router = require('express').Router();
-const Category = require('../../../models/Category');
+const { User, Category, Product,  Photo } = require('../../../models');
 
 router.get('/', async (req, res) => {
     try {
         const data = await Category.findAll({
-            // include: [{ model: Post }]
-            // include: [{ model: Post }, {model: Comment, through: Post, as:'comment'}]
-            // include: {model: Comment, include: Post}
+            include: [{ model: Product }]
         });
         res.status(200).json(data);
     } catch (err) {

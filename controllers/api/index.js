@@ -9,7 +9,6 @@ router.use('/users', userRoutes);
 if(process.env.NODE_ENV === 'dev'){
     const devRoutes = require('./dev');
     router.use('/dev', devRoutes);
-    console.log("made it here");
 }
 
 module.exports = router;
