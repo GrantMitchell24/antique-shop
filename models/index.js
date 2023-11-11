@@ -1,6 +1,6 @@
 const User = require('./User');
-const Product = require("./Product");
 const Category = require("./Category");
+const Product = require("./Product");
 const Photo = require("./Photo");
 
 Category.hasMany(Product, {
