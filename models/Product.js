@@ -26,7 +26,7 @@ Product.init(
         isDecimal: true,
       }
     },
-  //  Colors, weights and dimension were taken out. Assume to be in the description. 
+ 
     isAvailable: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
