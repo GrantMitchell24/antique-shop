@@ -3,19 +3,13 @@
         "title": "French and Indian flintlock rifle",
         "description": "Flintlock rifle dates back to 1750. Used by French military officers during the French and Indian war. Later must of been carried over by American troops during the American Revolution.",
         "price": 2500.00,
-        "dimension": "length: 5 feet, width: .60 caliber",
-        "color": "brown",
-        "weight": 8, 
         "category_id": 1,
         "isAvailable": true
     },
     {
         "title": "Afghani Jezail flintlock",
         "description": "Afghani flintlock rifle that dates back to 1816. Used for hunting and warfare during British colonial rule.",
-        "price": 300.00,
-        "dimension": "length: 4.5 feet, width: .69 caliber",
-        "color": "brown, gold, silver",
-        "weight": 7,
+        "price": 700.00,
         "category_id": 1,
         "isAvailable": true
     },
@@ -23,9 +17,6 @@
         "title": "Hmong flintlock rifle",
         "description": "Flinlock rifle from the ethnic Hmong hilltribe minority of Southeast Asia. Dates back to the 1800s. Used for hunting and also for warfare during the Vietnam War.",
         "price": 750.00,
-        "dimension": "length: 4.5 feet, width: .50 caliber",
-        "color": "brown and black",
-        "weight": 8,
         "category_id": 1,
         "isAvailable": false
     },
@@ -33,19 +24,13 @@
         "title": "Japanese matchlock pistol",
         "description": "Matchlock pistol that dates back to 1543. Used in warfare by the Japanese samurai during the 1400s.",
         "price": 800.00,
-        "dimenstion": "lenght: 6.5 inches, width: .45 caliber",
-        "color": "brown and black",
-        "weight":2,
         "category_id": 1,
         "isAvailable": true
     },
     {
-        "title": "Morrocan metal jar",
-        "description": "A Morrocan metal mounted pottery lidded jar that is painted with foliate motifs",
+        "title": "Moroccan metal jar",
+        "description": "A Moroccan metal mounted pottery lidded jar that is painted with foliate motifs",
         "price": 100.00,
-        "dimenstion": "height: 14 inches, width: 10 inches",
-        "color": "gree, pink, blue and white",
-        "weight": 20,
         "category_id": 2,
         "isAvailable": false
     },
@@ -53,9 +38,6 @@
         "title": "Bendigo pottery jar",
         "description": "An Australian colonial pottery jar that is used to store tobacco.",
         "price": 850.00,
-        "dimenstion": "height: 10 inches, width: 5 inches",
-        "color": "green and brown",
-        "weight": 14,
         "category_id": 2,
         "isAvailable": true
     },
@@ -63,19 +45,13 @@
         "title": "Harding black, lidded jar",
         "description": "A jar that was made by Harding Black who is a sculptor that taught children about pottery in the San Antonio, Texas area.",
         "price": 150.00,
-        "dimenstion": "height: 6 inches, width: 6 inches",
-        "color": "white",
-        "weight": 10,
         "category_id": 2,
         "isAvailable": true
     },
     {
         "title": "Sun Yat Sen Taiwan coin",
         "description": "Taiwan coin that has the face of Sun Yat Sen who is considered the Father of the nation of Taiwan. Dates back to the early 20th century.",
-        "price": 1300.00,
-        "dimension": "lenght: 1 inch, width: 1 inch",
-        "color": "bronze",
-        "weight": 11.34,
+        "price": 130.00,
         "category_id": 3,
         "isAvailable": true
     },
@@ -83,19 +59,13 @@
         "title": "Ancient Roman coin",
         "description": "Ancient Roman coin with the face of Octivan on it. Dates back to 39 B.C.",
         "price": 50.00,
-        "dimenstion": "lenght: 1 inch, width: 1 inch",
-        "color": "gray",
-        "weight": 11.34,
         "category_id": 3,
         "isAvailable": true
     },
     {
-        "title": "Ancient Ethiopian coin",
-        "description": "Ethiopian coin that dates back to the time of Menelik II who was Emperor of Ethiopia from 1866 to 1889. Dates back to the late 1800s.",
+        "title": "Ancient Ethiopian gold coin",
+        "description": "Ethiopian gold coin that dates back to the time of Menelik II who was Emperor of Ethiopia from 1866 to 1889. Dates back to the late 1800s.",
         "price": 500.00,
-        "dimension": "lenght: 1 inch, width: 1 inch",
-        "color": "gold",
-        "weight": 11.34,
         "category_id": 3,
         "isAvailable": true
     }
