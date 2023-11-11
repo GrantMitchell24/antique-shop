@@ -1,11 +1,11 @@
 [
     {
-        "catergory_name": "firearms"
+        "category_name": "firearms"
     },
     {
-        "catergory_name": "jars"
+        "category_name": "jars"
     },
     {
-        "catergory_name": "coin"
+        "category_name": "coin"
     }
 ]
