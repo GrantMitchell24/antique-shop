@@ -26,7 +26,6 @@ Product.init(
         isDecimal: true,
       }
     },
- 
     isAvailable: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
@@ -34,7 +33,7 @@ Product.init(
     },
     category_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'category',
         key: 'id',

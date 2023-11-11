@@ -6,10 +6,6 @@ const Photo = require("./Photo");
 // category have many products and products belong to category
 // product have many photo and photo belong to product
 
-const Product = require('./Product');
-const Category = require('./Category');
-const Photo = require('./Photo');
-
 // const ProductTag = require('./ProductTag');
 
 // Categories have many Products
@@ -26,7 +22,7 @@ Product.belongsTo(Category, {
 // Products have many Photos
 Product.hasMany(Photo, {
     foreignKey: 'product_id',
-    onDelete: 'SET NULL'
+    onDelete: 'CASCADE'
 });
 
 // Photo belong to Product
