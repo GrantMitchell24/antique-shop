@@ -21,4 +21,4 @@ Photo.belongsTo(Product, {
     foreignKey: 'product_id',
 });
 
-module.exports = { User, Product, Category, Photo };
+module.exports = { User, Category, Product,  Photo };
