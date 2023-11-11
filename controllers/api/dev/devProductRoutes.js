@@ -2,10 +2,10 @@ const router = require('express').Router();
 const { User, Category, Product,  Photo } = require('../../../models');
 
 router.get('/', async (req, res) => {
-    // Find all Category records and include other model data
+    // Find all Product records and include other model data
     try {
-        const data = await Category.findAll({
-            include: [{ model: Product }]
+        const data = await Product.findAll({
+            include: [{ model: Category }]
         });
         res.status(200).json(data);
     } catch (err) {
@@ -15,10 +15,10 @@ router.get('/', async (req, res) => {
 
 
 router.get('/:id', async (req, res) => {
-    // Find Category record by ID and include other model data
+    // Find Product record by ID and include other model data
     try {
-        const data = await Category.findByPk(req.params.id, {
-            include: [{ model: Product }]
+        const data = await Product.findByPk(req.params.id, {
+            include: [{ model: Category }]
         });
         // Return an error if record not found
         if (!data) {
@@ -33,9 +33,9 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-    // create a new category
+    // create a new Product
     try {
-        const data = await Category.create(req.body);
+        const data = await Product.create(req.body);
         res.status(200).json(data);
     } catch (err) {
         res.status(400).json(err);
@@ -44,9 +44,9 @@ router.post('/', async (req, res) => {
 
 
 router.put('/:id', async (req, res) => {
-    // update a category by its `id` value
+    // update a Product by its `id` value
     try {
-        const data = await Category.update(req.body, {
+        const data = await Product.update(req.body, {
             where: { id: req.params.id }
         });
         // Return an error if data not found
@@ -62,9 +62,9 @@ router.put('/:id', async (req, res) => {
 
 
 router.delete('/:id', async (req, res) => {
-    // delete a category by its `id` value
+    // delete a Product by its `id` value
     try {
-        const data = await Category.destroy({
+        const data = await Product.destroy({
             where: { id: req.params.id }
         });
         if (!data) {
