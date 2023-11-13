@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-
+// route = http://localhost:3001/api/dev/product/:id
 router.get('/:id', async (req, res) => {
     // Find Product record by ID and include other model data
     try {
