@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 })
-
+// route = http://localhost:3001/api/dev/photos/:id
 router.get('/:id', async (req, res) => {
     try {
         const data = await Photo.findByPk(req.params.id, {
