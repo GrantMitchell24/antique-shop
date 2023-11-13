@@ -1,0 +1,20 @@
+nav {
+  display: flex;
+}
+
+#h1-header {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: black;
+  display: flex;
+  border: 3px solid black;
+  border-radius: 10px;
+  background-color: white;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+p {
+  font-size: 14px;
+  font-weight: light;
+  color: var(--lightgrn);
+  font-family: 'Tilt Neon', sans-serif;
+}
