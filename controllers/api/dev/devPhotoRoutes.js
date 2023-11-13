@@ -1,11 +1,10 @@
 const router = require('express').Router();
-const { User, Category, Product, Photo } = require('../../ ../models');
+const { User, Category, Product, Photo } = require('../../../models');
 const { sync } = require('../../../models/User');
 
 router.get('/', async (req, res) => {
     try {
         const data = await Photo.findAll({
-            include: [{}] // what do we include here
         })
         res.status(200).json(data);
     } catch (err) {
@@ -13,10 +12,9 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/id:', async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const data = await Photo.findByPk(req.params.id, {
-            include: [{}] // include what here
         })
         if (!data) {
             res.status(404).json({ message: 'Record' + req.params.id + 'not found.' });
@@ -44,7 +42,7 @@ router.put('/:id', async (req, res) => {
         });
 
         if (data[0] === 0) {
-            res.status(400).json({ massage: 'record' + req.params.id + 'is not found or updated' }) // recored of photo?
+            res.status(400).json({ massage: 'Record' + req.params.id + 'is not found or updated' }) // recored of photo?
             return;
         }
         res.status(200).json({ massage: 'Record' + req.params.id + ' update.', updated_to: req.body });
