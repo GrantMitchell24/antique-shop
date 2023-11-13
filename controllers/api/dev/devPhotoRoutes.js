@@ -5,6 +5,7 @@ const { sync } = require('../../../models/User');
 router.get('/', async (req, res) => {
     try {
         const data = await Photo.findAll({
+
         })
         res.status(200).json(data);
     } catch (err) {
