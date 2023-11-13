@@ -1,0 +1,72 @@
+[
+    {
+        "title": "French and Indian flintlock rifle",
+        "description": "Flintlock rifle dates back to 1750. Used by French military officers during the French and Indian war. Later must of been carried over by American troops during the American Revolution.",
+        "price": 2500.00,
+        "isAvailable": true,        
+        "category_id": 1
+    },
+    {
+        "title": "Afghani Jezail flintlock",
+        "description": "Afghani flintlock rifle that dates back to 1816. Used for hunting and warfare during British colonial rule.",
+        "price": 700.00,
+        "isAvailable": true,
+        "category_id": 1
+    },
+    {
+        "title": "Hmong flintlock rifle",
+        "description": "Flinlock rifle from the ethnic Hmong hilltribe minority of Southeast Asia. Dates back to the 1800s. Used for hunting and also for warfare during the Vietnam War.",
+        "price": 750.00,
+        "isAvailable": false,
+        "category_id": 1
+    },
+    {
+        "title": "Japanese matchlock pistol",
+        "description": "Matchlock pistol that dates back to 1543. Used in warfare by the Japanese samurai during the 1400s.",
+        "price": 800.00,
+        "isAvailable": true,
+        "category_id": 1
+    },
+    {
+        "title": "Moroccan metal jar",
+        "description": "A Moroccan metal mounted pottery lidded jar that is painted with foliate motifs",
+        "price": 100.00,
+        "isAvailable": false,
+        "category_id": 2
+    },
+    {
+        "title": "Bendigo pottery jar",
+        "description": "An Australian colonial pottery jar that is used to store tobacco.",
+        "price": 850.00,
+        "isAvailable": true,        
+        "category_id": 2
+    },
+    {
+        "title": "Harding black, lidded jar",
+        "description": "A jar that was made by Harding Black who is a sculptor that taught children about pottery in the San Antonio, Texas area.",
+        "price": 150.00,
+        "isAvailable": true,        
+        "category_id": 2
+    },
+    {
+        "title": "Sun Yat Sen Taiwan coin",
+        "description": "Taiwan coin that has the face of Sun Yat Sen who is considered the Father of the nation of Taiwan. Dates back to the early 20th century.",
+        "price": 130.00,
+        "isAvailable": true,        
+        "category_id": 3
+    },
+    {
+        "title": "Ancient Roman coin",
+        "description": "Ancient Roman coin with the face of Octivan on it. Dates back to 39 B.C.",
+        "price": 50.00,
+        "isAvailable": true,        
+        "category_id": 3
+    },
+    {
+        "title": "Ancient Ethiopian gold coin",
+        "description": "Ethiopian gold coin that dates back to the time of Menelik II who was Emperor of Ethiopia from 1866 to 1889. Dates back to the late 1800s.",
+        "price": 500.00,
+        "isAvailable": true,        
+        "category_id": 3
+    }
+]
