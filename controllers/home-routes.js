@@ -6,7 +6,15 @@ const { User, Category, Product,  Photo } = require('../models');
 router.get('/', async (req, res) => {
 
     try {
-        res.render('homepage');
+        const data = await Product.findAll({
+            attributes: ['title', 'description','price'],
+            include: [
+                { model: Category, attributes: ['title']},
+                { model: Photo, attributes: ['url_link']}
+            ]
+        });
+        const products = data.map((item) => item.get({ plain: true }));
+        res.render('homepage', {products});
     } catch (err) {
         res.status(500).json(err);
     }

@@ -1,1 +1,6 @@
-<h1>Hello World!</h1>
+<section>
+    {{!-- go to the product partial handle, render and paste in --}}
+    {{#each products as |product|}}
+    {{>product}}
+    {{/each}}
+</section>

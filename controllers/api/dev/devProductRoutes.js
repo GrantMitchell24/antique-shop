@@ -5,7 +5,11 @@ router.get('/', async (req, res) => {
     // Find all Product records and include other model data
     try {
         const data = await Product.findAll({
-            include: [{ model: Category }]
+            attributes: ['title', 'description','price'],
+            include: [
+                { model: Category, attributes: ['title']},
+                { model: Photo, attributes: ['url_link']}
+            ]
         });
         res.status(200).json(data);
     } catch (err) {
