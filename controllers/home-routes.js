@@ -14,7 +14,11 @@ router.get('/', async (req, res) => {
             ]
         });
         const products = data.map((item) => item.get({ plain: true }));
-        res.render('homepage', {products});
+        const products2 = products.map(product => ({
+            ...product,
+            url_link: product.photos[0].url_link
+        }));
+        res.render('homepage', {products: products2});
     } catch (err) {
         res.status(500).json(err);
     }
