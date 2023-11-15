@@ -56,8 +56,13 @@ router.get('/cart', async (req, res) => {
             url_link: product.photos[0].url_link
         }));
 
+        // // Pass serialized data and session flag into template
+        // res.status(200).json(products);
         // Pass serialized data and session flag into template
-        res.status(200).json(products);
+        res.render('homepage', {
+            products: products,
+            logged_in: req.session.logged_in
+        });
 
     } catch (err) {
         res.status(500).json(err);
