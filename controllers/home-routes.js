@@ -60,6 +60,40 @@ router.get('/', async (req, res) => {
 
 });
 
+// route = http://localhost:3001/product/:id
+router.get('/product/:id', async (req, res) => {
+    
+    try {
+        // Find record by id and include other model data
+        const data = await Product.findByPk(req.params.id, {
+            attributes: ['id','title', 'description', 'price'],
+            include: [
+                { model: Category, attributes: ['title'] },
+                { model: Photo, attributes: ['url_link'] }
+            ]
+        });
+        // Return an error if record not found
+        if (!data) {
+            res.status(404).json({ message: 'Record ' + req.params.id + ' not found.' });
+            return;
+        }
+
+        // Serialize data so the template can read it
+        const serialData = data.get({plain:true});
+        const product = {...serialData, url_link: serialData.photos[0].url_link};
+        
+        // Pass serialized data and session flag into template
+        // res.status(200).json(product);
+        res.render('product-page', {
+            ...product,
+            logged_in: req.session.logged_in
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/cart', withAuth, async (req, res) => {
