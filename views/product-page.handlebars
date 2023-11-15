@@ -1,6 +1,4 @@
 <section>
-
-    {{#each products as |product|}}
     <div class="card text-center mb-5">
         <div class="card-header">
             <img src="{{url_link}}" class="card-img-top" alt="...">
@@ -9,9 +7,9 @@
             <h5 class="card-title">{{title}}</h5>
             <p class="card-text">{{description}}</p>
             <p>$ {{price}}</p>
-            <a href="/product/{{id}}" class="btn btn-primary">Go to Product Details</a>
-        </div>
+            <a href="/" class="btn btn-secondary">Back</a>
+            {{#if logged_in}}
+            <a href="/" class="btn btn-primary">Add to Cart</a>
+            {{/if}}
     </div>
-    {{/each}}
-
 </section>

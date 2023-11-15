@@ -7,9 +7,10 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
 
     try {
-        // Get all RECORDS and JOIN with other data
+
+        // Find all records and include other model data
         const data = await Product.findAll({
-            attributes: ['title', 'description', 'price'],
+            attributes: ['id', 'title', 'description', 'price'],
             include: [
                 { model: Category, attributes: ['title'] },
                 { model: Photo, attributes: ['url_link'] }
@@ -17,21 +18,56 @@ router.get('/', async (req, res) => {
         });
 
         // Serialize data so the template can read it
-        const products = data.map((item) => item.get({ plain: true }));
-        const products2 = products.map(product => ({
+        const serialData = data.map((item) => item.get({ plain: true }));
+        const products = serialData.map(product => ({
             ...product,
             url_link: product.photos[0].url_link
         }));
 
         // Pass serialized data and session flag into template
         res.render('homepage', {
-            products: products2,
+            products: products,
             logged_in: req.session.logged_in
         });
+
+
     } catch (err) {
         res.status(500).json(err);
     }
 
+});
+
+// route = http://localhost:3001/product/:id
+router.get('/product/:id', async (req, res) => {
+    
+    try {
+        // Find record by id and include other model data
+        const data = await Product.findByPk(req.params.id, {
+            attributes: ['id','title', 'description', 'price'],
+            include: [
+                { model: Category, attributes: ['title'] },
+                { model: Photo, attributes: ['url_link'] }
+            ]
+        });
+        // Return an error if record not found
+        if (!data) {
+            res.status(404).json({ message: 'Record ' + req.params.id + ' not found.' });
+            return;
+        }
+
+        // Serialize data so the template can read it
+        const serialData = data.get({plain:true});
+        const product = {...serialData, url_link: serialData.photos[0].url_link};
+        
+        // Pass serialized data and session flag into template
+        res.render('product-page', {
+            ...product,
+            logged_in: req.session.logged_in
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 
