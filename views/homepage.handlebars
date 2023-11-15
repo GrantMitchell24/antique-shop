@@ -1,6 +1,19 @@
 <section>
     {{!-- go to the product partial handle, render and paste in --}}
     {{#each products as |product|}}
-    {{>product}}
+    {{!-- {{>product}} --}}
+    <div class="card text-center">
+        <div class="card-header">
+            <img src="{{url_link}}" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{description}}</p>
+            <p>{{price}}</p>
+            <a href="#" class="btn btn-primary">Add To Cart</a>
+        </div>
+        <div class="card-footer text-body-secondary">
+        </div>
+    </div>
     {{/each}}
 </section>
