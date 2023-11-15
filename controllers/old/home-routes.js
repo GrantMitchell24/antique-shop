@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { User, Category, Product,  Photo } = require('../models');
-const withAuth = require('../utils/auth');
+const { User, Category, Product,  Photo } = require('../../models');
 
 
 //API route: http://localhost:3001/
@@ -25,8 +24,5 @@ router.get('/', async (req, res) => {
     }
 
 });
-
-
-
 
 module.exports = router;
