@@ -1,17 +1,24 @@
 const router = require('express').Router();
-const { User, Category, Product,  Photo } = require('../../../models');
+const { User, Category, Product, Photo } = require('../../../models');
 
 router.get('/', async (req, res) => {
     // Find all Product records and include other model data
     try {
         const data = await Product.findAll({
-            attributes: ['title', 'description','price'],
+            attributes: ['title', 'description', 'price'],
             include: [
-                { model: Category, attributes: ['title']},
-                { model: Photo, attributes: ['url_link']}
+                { model: Category, attributes: ['title'] },
+                { model: Photo, attributes: ['url_link'] }
             ]
         });
-        res.status(200).json(data);
+        // Serialize data so the template can read it
+        const products = data.map((item) => item.get({ plain: true }));
+        const products2 = products.map(product => ({
+            ...product,
+            url_link: product.photos[0].url_link
+        }));
+        // res.status(200).json(data);
+        res.status(200).json(products2);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -54,11 +61,11 @@ router.put('/:id', async (req, res) => {
             where: { id: req.params.id }
         });
         // Return an error if data not found
-        if(data[0] === 0) {
+        if (data[0] === 0) {
             res.status(400).json({ message: 'Record ' + req.params.id + ' is not found or updated.' });
             return;
         }
-        res.status(200).json({ message: 'Record ' + req.params.id + ' updated.' , updated_to: req.body  });
+        res.status(200).json({ message: 'Record ' + req.params.id + ' updated.', updated_to: req.body });
     } catch (err) {
         res.status(500).json(err);
     }
