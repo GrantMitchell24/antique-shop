@@ -59,7 +59,7 @@ router.get('/cart', async (req, res) => {
         // // Pass serialized data and session flag into template
         // res.status(200).json(products);
         // Pass serialized data and session flag into template
-        res.render('homepage', {
+        res.render('cart', {
             products: products,
             logged_in: req.session.logged_in
         });
