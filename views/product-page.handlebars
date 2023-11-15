@@ -1,6 +1,6 @@
 <section>
     {{!-- go to the product partial handle, render and paste in --}}
-    {{#each products as |product|}}
+    {{!-- {{#each products as |product|}} --}}
     {{!-- {{>product}} --}}
     
         <div class="card text-center">
@@ -11,11 +11,11 @@
                 <h5 class="card-title">{{title}}</h5>
                 <p class="card-text">{{description}}</p>
                 <p>{{price}}</p>
-                <a href="/product/{{id}}" class="btn btn-primary">Go to Product Details</a>
+                {{!-- <a href="/product/{{id}}" class="btn btn-primary">Go to Product Details</a> --}}
             </div>
             <div class="card-footer text-body-secondary">
             </div>
         </div>
     
-    {{/each}}
+    {{!-- {{/each}} --}}
 </section>
