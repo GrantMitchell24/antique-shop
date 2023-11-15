@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Category, Product,  Photo } = require('../models');
+const { User, Category, Product, Photo } = require('../models');
 const withAuth = require('../utils/auth');
 
 
@@ -9,10 +9,10 @@ router.get('/', async (req, res) => {
     try {
         // Get all RECORDS and JOIN with other data
         const data = await Product.findAll({
-            attributes: ['title', 'description','price'],
+            attributes: ['title', 'description', 'price'],
             include: [
-                { model: Category, attributes: ['title']},
-                { model: Photo, attributes: ['url_link']}
+                { model: Category, attributes: ['title'] },
+                { model: Photo, attributes: ['url_link'] }
             ]
         });
 
@@ -32,6 +32,17 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 
+});
+
+
+router.get('/login', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    if (req.session.logged_in) {
+        res.redirect('/');
+        return;
+    }
+
+    res.render('login');
 });
 
 
