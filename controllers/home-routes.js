@@ -74,19 +74,50 @@ router.get('/product/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/cart', withAuth, async (req, res) => {
     try {
-        // Find the logged in user based on the session ID
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            // include: [{ model: Product }],
+        // // Find the logged in user based on the session ID
+        // const userData = await User.findByPk(req.session.user_id, {
+        //     attributes: { exclude: ['password'] },
+        // });
+
+        // const user = userData.get({ plain: true });
+        // console.log(user);
+
+        // res.render('cart', {
+        //     ...user,
+        //     logged_in: true
+        // });
+
+        const cartProductIDs = [ 1, 6, 7];
+
+        // Find all records and include other model data
+        const data = await Product.findAll({
+            attributes: ['id','title', 'description', 'price'],
+            include: [
+                { model: Category, attributes: ['title'] },
+                { model: Photo, attributes: ['url_link'] }
+            ],
+            where: {
+                id: cartProductIDs
+            }
         });
 
-        const user = userData.get({ plain: true });
-        console.log(user);
+        // Serialize data so the template can read it
+        const serialData = data.map((item) => item.get({ plain: true }));
+        const products = serialData.map(product => ({
+            ...product,
+            url_link: product.photos[0].url_link
+        }));
 
+        // Pass serialized data and session flag into template
+        // res.status(200).json(products);
         res.render('cart', {
-            ...user,
-            logged_in: true
+            products: products,
+            logged_in: req.session.logged_in
         });
+
+
+
+
     } catch (err) {
         res.status(500).json(err);
     }

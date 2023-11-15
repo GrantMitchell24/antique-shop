@@ -35,7 +35,8 @@ router.get('/cart', async (req, res) => {
         //     "cartProductIDs" : [ "1", "6", "7"]
         // }
 
-        const cartProductIDs = req.body.cartProductIDs; 
+        // const cartProductIDs = req.body.cartProductIDs;
+        const cartProductIDs = ["1", "6", "7"]; 
     
         // Find all records and include other model data
         const data = await Product.findAll({
@@ -45,7 +46,7 @@ router.get('/cart', async (req, res) => {
                 { model: Photo, attributes: ['url_link'] }
             ],
             where: {
-                id: cartProductIDs
+                id: cartProductIDs,
             }
         });
 
