@@ -5,7 +5,7 @@ router.get('/', async (req, res) => {
     try {
         // Find all records and include other model data
         const data = await Product.findAll({
-            attributes: ['title', 'description', 'price'],
+            attributes: ['id','title', 'description', 'price'],
             include: [
                 { model: Category, attributes: ['title'] },
                 { model: Photo, attributes: ['url_link'] }
@@ -13,15 +13,14 @@ router.get('/', async (req, res) => {
         });
 
         // Serialize data so the template can read it
-        const products = data.map((item) => item.get({ plain: true }));
-        const products2 = products.map(product => ({
+        const serialData = data.map((item) => item.get({ plain: true }));
+        const products = serialData.map(product => ({
             ...product,
             url_link: product.photos[0].url_link
         }));
 
         // Pass serialized data and session flag into template
-        // res.status(200).json(data);
-        res.status(200).json(products2);
+        res.status(200).json(products);
 
     } catch (err) {
         res.status(500).json(err);
@@ -34,7 +33,7 @@ router.get('/:id', async (req, res) => {
     try {
         // Find record by id and include other model data
         const data = await Product.findByPk(req.params.id, {
-            attributes: ['title', 'description', 'price'],
+            attributes: ['id','title', 'description', 'price'],
             include: [
                 { model: Category, attributes: ['title'] },
                 { model: Photo, attributes: ['url_link'] }
@@ -47,15 +46,11 @@ router.get('/:id', async (req, res) => {
         }
 
         // Serialize data so the template can read it
-        // const products = data.map((item) => item.get({ plain: true }));
-        // const products2 = products.map(product => ({
-        //     ...product,
-        //     url_link: product.photos[0].url_link
-        // }));
-
+        const serialData = data.get({plain:true});
+        const product = {...serialData, url_link: serialData.photos[0].url_link};
+        
         // Pass serialized data and session flag into template
-        res.status(200).json(data);
-        // res.status(200).json(products2);
+        res.status(200).json(product);
 
     } catch (err) {
         res.status(500).json(err);
