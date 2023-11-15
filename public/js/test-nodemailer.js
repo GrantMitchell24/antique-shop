@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'nestinbk@gmail.com',
-        pass: 'ryjo lwgi mfpu vcar',
+        pass: process.env.EMAIL_APP_PASSWORD,
     },
 });
 
@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 const mailOptions = {
     from: 'nestinbk@gmail.com',
     to: 'nestibry@gmail.com',
-    subject: 'Hello from Nodemailer!',
+    subject: 'Hello from Nodemailer! - ENV variable',
     text: 'This is a test email sent using Nodemailer. Using an environment variable',
   };
   
