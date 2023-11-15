@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User } = require('../../../models');
 
 router.post('/login', async (req, res) => {
   try {
@@ -25,6 +25,7 @@ router.post('/login', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
+    //   res.render('main', {logged_in: req.session.logged_in});
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
