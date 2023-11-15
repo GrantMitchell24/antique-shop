@@ -1,7 +1,7 @@
 const router = require('express').Router();
 require('dotenv').config();
 
-const userRoutes = require('./userRoutes');
+const userRoutes = require('./user-routes');
 
 router.use('/users', userRoutes);
 
