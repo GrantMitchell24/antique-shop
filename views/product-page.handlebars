@@ -1,5 +1,5 @@
 <section>
-    <div class="card text-center">
+    <div class="card text-center mb-5">
         <div class="card-header">
             <img src="{{url_link}}" class="card-img-top" alt="...">
         </div>
@@ -8,9 +8,8 @@
             <p class="card-text">{{description}}</p>
             <p>{{price}}</p>
             <a href="/" class="btn btn-secondary">Back</a>
+            {{#if logged_in}}
             <a href="/" class="btn btn-primary">Add to Cart</a>
-        </div>
-        <div class="card-footer text-body-secondary">
-        </div>
+            {{/if}}
     </div>
 </section>
