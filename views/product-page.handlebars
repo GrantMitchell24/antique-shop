@@ -1,5 +1,5 @@
 <section>
-    <div class="card text-center mb-5">
+    <div class="card text-center mb-5 product-card">
         <div class="card-header">
             <img src="{{url_link}}" class="card-img-top" alt="...">
         </div>
@@ -9,7 +9,10 @@
             <p>$ {{price}}</p>
             <a href="/" class="btn btn-secondary">Back</a>
             {{#if logged_in}}
-            <a href="/" class="btn btn-primary">Add to Cart</a>
+            <a href="/" class="btn btn-primary add-to-cart" data-id="{{id}}">Add to Cart</a>
             {{/if}}
     </div>
 </section>
+
+<script src="/js/product-to-cart.js"></script>
+{{!-- <script src="./js/login.js"></script> --}}
