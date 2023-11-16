@@ -74,20 +74,19 @@ router.get('/product/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/cart', withAuth, async (req, res) => {
     try {
-        // // Find the logged in user based on the session ID
-        // const userData = await User.findByPk(req.session.user_id, {
-        //     attributes: { exclude: ['password'] },
-        // });
-
-        // const user = userData.get({ plain: true });
-        // console.log(user);
-
-        // res.render('cart', {
-        //     ...user,
-        //     logged_in: true
-        // });
+        // console logged req.session.cart for debugging
         console.log("This is req.session.cart: ");
         console.log(req.session.cart);
+
+        // If no cart, render an empty cart
+        if(!req.session.cart){
+            res.render('cart', {
+                cart: false,
+                logged_in: req.session.logged_in
+            });
+            return;
+        }
+
         const cartProductIDs = req.session.cart;
 
         // Find all records and include other model data
@@ -112,6 +111,7 @@ router.get('/cart', withAuth, async (req, res) => {
         // Pass serialized data and session flag into template
         // res.status(200).json(products);
         res.render('cart', {
+            cart: true,
             products: products,
             logged_in: req.session.logged_in
         });

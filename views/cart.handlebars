@@ -9,6 +9,7 @@
 
 </div> --}}
 
+{{#if cart}}
 <section>
 
     {{#each products as |product|}}
@@ -27,8 +28,14 @@
 
 </section>
 
-<div class="subtotal" style="max-width: 30rem;">
-
+<div class="total" style="max-width: 30rem;">
   <h2>Total</h2>
-
 </div>
+
+{{else}}
+
+<div class="total" style="max-width: 30rem;">
+  <h4>No items in the cart.</h4>
+</div>
+
+{{/if}}
