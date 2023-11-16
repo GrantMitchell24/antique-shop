@@ -66,7 +66,10 @@ router.post('/cart', async (req, res) => {
             if(!req.session.cart){
                 req.session.cart = req.body.id;
             } else {
-                req.session.cart = [...req.session?.cart, req.body.id];
+                // If doesn't already exist in cart, add the product
+                if(!req.session.cart.includes(req.body.id)){
+                    req.session.cart = [...req.session?.cart, req.body.id];
+                }
             }
             
             res.status(200).json({status: "success", message: req.session.cart});
