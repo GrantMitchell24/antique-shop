@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 const mailOptions = {
     from: 'nestinbk@gmail.com',
     to: 'nestibry@gmail.com',
-    subject: 'Hello from Nodemailer! - ENV variable',
+    subject: 'Hello from Nodemailer! - Bryan Rocks!',
     text: 'This is a test email sent using Nodemailer. Using an environment variable',
   };
   
