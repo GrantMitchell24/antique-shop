@@ -23,13 +23,13 @@ Then just press play!
 click the video to see how it works.
 youtube:
 # Credits
-Bryan Nestingen
+* Bryan Nestingen
 github link: https://github.com/nestibry
-Grant Mitchell
+* Grant Mitchell
 github link: https://github.com/GrantMitchell24
-Joey Thao
+* Joey Thao
 github link: https://github.com/Thaodev23
-Yacob Menghistu
+* Yacob Menghistu
 github link: https://github.com/YacobMn
 # License
 This project is licensed under the MIT License. Feel free to explore, contribute, and share this platform with other antique enthusiasts!
