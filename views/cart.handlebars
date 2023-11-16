@@ -12,7 +12,8 @@
 {{#if cart}}
 <section>
 <div class="total" style="max-width: 30rem;">
-  <h2>Total: $ {{totalPrice}}</h2>
+  <h3>Total: $ {{totalPrice}}</h3>
+  <a href="/cart" class="btn btn-primary mb-3">Email Invoice</a>
 </div>
 
     {{#each products as |product|}}
@@ -24,7 +25,7 @@
             <h5 class="card-title">{{title}}</h5>
             <p class="card-text">{{description}}</p>
             <p>$ {{price}}</p>
-            <a href="/product/{{id}}" class="btn btn-primary">Go to Product Details</a>
+            <a href="/product/{{id}}" class="btn btn-info">Go to Product Details</a>
         </div>
     </div>
     {{/each}}
