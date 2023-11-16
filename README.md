@@ -21,7 +21,7 @@ Then just press play!
 5. Confirmation email:
   * Once the purchase is successfully completed, a confirmation email will be sent directly to the email address associated with your account.
 click the video to see how it works.
-youtube:
+* youtube:https://youtu.be/u5i-6QOQaMk
 # Credits
 * Bryan Nestingen
 github link: https://github.com/nestibry
