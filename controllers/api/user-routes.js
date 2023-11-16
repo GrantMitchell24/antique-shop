@@ -94,14 +94,14 @@ router.post('/invoice', async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'nestinbk@gmail.com',
+                user: process.env.EMAIL_SHOP_OWNER,
                 pass: process.env.EMAIL_APP_PASSWORD,
             },
         });
 
 
         const mailOptions = {
-            from: 'nestinbk@gmail.com',
+            from: process.env.EMAIL_SHOP_OWNER,
             to: 'nestibry@gmail.com',
             subject: 'Hello from Nodemailer! - Emailed Invoice!',
             text: 'This is a test email sent using Nodemailer. Using an environment variable',
