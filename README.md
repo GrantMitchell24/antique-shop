@@ -12,13 +12,13 @@ Then just press play!
   * When you find the product you want to purchase, click on the "Add to Cart" button.
 3. Login/Sign-Up:
   * Clicking the "Add to Cart" button will direct you to the Login/Sign-Up page.
-  * Sigh-Up(if not already a Member):
+  * Sign-Up(if not already a Member):
     * Provide the required information to create your account.
   * Sign-In(if already a Member):
     * Simply use your registered email and password.
-4. Complete perches:
+4. Complete purchases:
   * After logging in, you will be directed to the shopping cart to review selected products and subtotal price.
-5. Conformation email:
+5. Confirmation email:
   * Once the purchase is successfully completed, a confirmation email will be sent directly to the email address associated with your account.
 click the video to see how it works.
 youtube:
