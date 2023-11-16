@@ -11,6 +11,9 @@
 
 {{#if cart}}
 <section>
+<div class="total" style="max-width: 30rem;">
+  <h2>Total: $ {{totalPrice}}</h2>
+</div>
 
     {{#each products as |product|}}
     <div class="card text-center mb-5">
@@ -28,9 +31,6 @@
 
 </section>
 
-<div class="total" style="max-width: 30rem;">
-  <h2>Total</h2>
-</div>
 
 {{else}}
 
