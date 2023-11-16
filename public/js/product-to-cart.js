@@ -5,11 +5,16 @@ const addToCartHandler = async (event) => {
         const id = event.target.getAttribute('data-id');
     
         console.log(id);
+        const response = await fetch('/api/users/cart', {
+            method: 'POST',
+            body: JSON.stringify({ id }),
+            headers: { 'Content-Type': 'application/json' },
+          });
     
         if (response.ok) {
           document.location.replace('/cart');
         } else {
-          alert('Failed to delete project');
+          alert('Failed to add product to cart');
         }
       }
 };
