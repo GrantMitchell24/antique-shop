@@ -58,4 +58,18 @@ router.post('/logout', (req, res) => {
     }
 });
 
+router.post('/cart', async (req, res) => {
+    try {
+
+        console.log(req.body);
+        // req.session.save(() => {
+        // });
+
+        res.status(200).json("successfully completed post /api/users/cart route");
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 module.exports = router;
