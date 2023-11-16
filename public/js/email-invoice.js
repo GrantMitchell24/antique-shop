@@ -1,27 +1,18 @@
-const nodemailer = require('nodemailer');
-require('dotenv').config();
+const emailInvoiceHandler = async (event) => {
+    event.preventDefault();
 
-// Create a transporter with your Gmail account
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'nestinbk@gmail.com',
-        pass: process.env.EMAIL_APP_PASSWORD,
-    },
-});
+    const response = await fetch('/api/users/invoice', {
+        method: 'POST',
+        body: JSON.stringify({ status: "invoice" }),
+        headers: { 'Content-Type': 'application/json' },
+    });
 
-const mailOptions = {
-    from: 'nestinbk@gmail.com',
-    to: 'nestibry@gmail.com',
-    subject: 'Hello from Nodemailer! - Bryan Rocks!',
-    text: 'This is a test email sent using Nodemailer. Using an environment variable',
+    if (response.ok) {
+        alert("Thanks for your interest. Please check your email for the invoice.");
+        document.location.replace('/cart');
+    } else {
+        alert('Failed to email invoice');
+    }
 };
 
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        console.error(error);
-    } else {
-        console.log('Email sent: ' + info.response);
-    }
-});
-
+document.querySelector('.email-invoice').addEventListener('click', emailInvoiceHandler);
