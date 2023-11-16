@@ -30,7 +30,6 @@ router.get('/', async (req, res) => {
             logged_in: req.session.logged_in
         });
 
-
     } catch (err) {
         res.status(500).json(err);
     }
@@ -39,11 +38,11 @@ router.get('/', async (req, res) => {
 
 // route = http://localhost:3001/product/:id
 router.get('/product/:id', async (req, res) => {
-    
+
     try {
         // Find record by id and include other model data
         const data = await Product.findByPk(req.params.id, {
-            attributes: ['id','title', 'description', 'price'],
+            attributes: ['id', 'title', 'description', 'price'],
             include: [
                 { model: Category, attributes: ['title'] },
                 { model: Photo, attributes: ['url_link'] }
@@ -56,9 +55,9 @@ router.get('/product/:id', async (req, res) => {
         }
 
         // Serialize data so the template can read it
-        const serialData = data.get({plain:true});
-        const product = {...serialData, url_link: serialData.photos[0].url_link};
-        
+        const serialData = data.get({ plain: true });
+        const product = { ...serialData, url_link: serialData.photos[0].url_link };
+
         // Pass serialized data and session flag into template
         res.render('product-page', {
             ...product,
@@ -74,18 +73,53 @@ router.get('/product/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/cart', withAuth, async (req, res) => {
     try {
-        // Find the logged in user based on the session ID
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            // include: [{ model: Product }],
+        // console logged req.session.cart for debugging
+        console.log("This is req.session.cart: ");
+        console.log(req.session.cart);
+
+        // If no cart, render an empty cart
+        if (!req.session.cart) {
+            res.render('cart', {
+                cart: false,
+                logged_in: req.session.logged_in
+            });
+            return;
+        }
+
+        const cartProductIDs = req.session.cart;
+
+        // Find all records and include other model data
+        const data = await Product.findAll({
+            attributes: ['id', 'title', 'description', 'price'],
+            include: [
+                { model: Category, attributes: ['title'] },
+                { model: Photo, attributes: ['url_link'] }
+            ],
+            where: {
+                id: cartProductIDs
+            }
         });
 
-        const user = userData.get({ plain: true });
-        console.log(user);
+        // // calculate total price for all products in the cart
+        const totalPrice = await Product.sum('price', {
+            where: {
+                id: cartProductIDs
+            }
+        });
 
+        // Serialize data so the template can read it
+        const serialData = data.map((item) => item.get({ plain: true }));
+        const products = serialData.map(product => ({
+            ...product,
+            url_link: product.photos[0].url_link
+        }));
+
+        // Pass serialized data and session flag into template
         res.render('cart', {
-            ...user,
-            logged_in: true
+            cart: true,
+            totalPrice: totalPrice,
+            products: products,
+            logged_in: req.session.logged_in
         });
     } catch (err) {
         res.status(500).json(err);
@@ -99,7 +133,6 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         return;
     }
-
     res.render('login');
 });
 

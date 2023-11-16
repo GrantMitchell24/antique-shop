@@ -27,6 +27,50 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+router.get('/cart', async (req, res) => {
+    try {
+        // Body needs to be of this form
+        // {
+        //     "cartProductIDs" : [ "1", "6", "7"]
+        // }
+
+        // const cartProductIDs = req.body.cartProductIDs;
+        const cartProductIDs = ["1", "6", "7"]; 
+    
+        // Find all records and include other model data
+        const data = await Product.findAll({
+            attributes: ['id','title', 'description', 'price'],
+            include: [
+                { model: Category, attributes: ['title'] },
+                { model: Photo, attributes: ['url_link'] }
+            ],
+            where: {
+                id: cartProductIDs,
+            }
+        });
+
+        // Serialize data so the template can read it
+        const serialData = data.map((item) => item.get({ plain: true }));
+        const products = serialData.map(product => ({
+            ...product,
+            url_link: product.photos[0].url_link
+        }));
+
+        // // Pass serialized data and session flag into template
+        // res.status(200).json(products);
+        // Pass serialized data and session flag into template
+        res.render('cart', {
+            products: products,
+            logged_in: req.session.logged_in
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 // route = http://localhost:3001/api/dev/product/:id
 router.get('/:id', async (req, res) => {
     
@@ -56,6 +100,9 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+
 
 
 router.post('/', async (req, res) => {

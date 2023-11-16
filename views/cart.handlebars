@@ -1,15 +1,35 @@
 <div class="cart" style="max-width: 30rem;">
 
-  <h2>cart</h2>
-
+  <h2>CART</h2>
+  
 </div>
-<div class="product-card" style="max-width: 30rem;">
 
-  <h2>product</h2>
-
+{{#if cart}}
+<section>
+<div class="total" style="max-width: 30rem;">
+  <h3>Total: $ {{totalPrice}}</h3>
+  <a href="/cart" class="btn btn-primary mb-3 email-invoice">Email Invoice</a>
 </div>
-<div class="subtotal" style="max-width: 30rem;">
 
-  <h2>subtotal</h2>
+    {{#each products as |product|}}
+    <div class="card text-center mb-5">
+        <div class="card-header">
+            <img src="{{url_link}}" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{description}}</p>
+            <p>$ {{price}}</p>
+            <a href="/product/{{id}}" class="btn btn-info">Go to Product Details</a>
+        </div>
+    </div>
+    {{/each}}
 
+</section>
+<script src="./js/email-invoice.js"></script>
+
+{{else}}
+<div class="total" style="max-width: 30rem;">
+  <h4>No items in the cart.</h4>
 </div>
+{{/if}}
