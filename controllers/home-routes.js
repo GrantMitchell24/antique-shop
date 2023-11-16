@@ -30,7 +30,6 @@ router.get('/', async (req, res) => {
             logged_in: req.session.logged_in
         });
 
-
     } catch (err) {
         res.status(500).json(err);
     }
@@ -102,23 +101,11 @@ router.get('/cart', withAuth, async (req, res) => {
         });
 
         // // calculate total price for all products in the cart
-        // const result = await Product.findAll({
-        //     attributes: [
-        //         [sequelize.fn('SUM', sequelize.col('price')), 'totalPrice'],
-        //     ],
-        //     where: {
-        //         id: cartProductIDs
-        //     }
-        // });
-
         const totalPrice = await Product.sum('price', {
             where: {
                 id: cartProductIDs
             }
         });
-        console.log(totalPrice);
-
-        // console.log(result);
 
         // Serialize data so the template can read it
         const serialData = data.map((item) => item.get({ plain: true }));
@@ -128,17 +115,12 @@ router.get('/cart', withAuth, async (req, res) => {
         }));
 
         // Pass serialized data and session flag into template
-        // res.status(200).json(products);
         res.render('cart', {
             cart: true,
             totalPrice: totalPrice,
             products: products,
             logged_in: req.session.logged_in
         });
-
-
-
-
     } catch (err) {
         res.status(500).json(err);
     }
@@ -151,7 +133,6 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         return;
     }
-
     res.render('login');
 });
 
