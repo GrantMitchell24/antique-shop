@@ -87,8 +87,8 @@ router.post('/cart', async (req, res) => {
 router.post('/invoice', async (req, res) => {
     try {
 
-        console.log(req.body);
-
+        const userData = await User.findOne({ where: { id: req.session.user_id } });
+        console.log(userData.email);
 
         // Create a transporter with your Gmail account
         const transporter = nodemailer.createTransport({
@@ -99,12 +99,11 @@ router.post('/invoice', async (req, res) => {
             },
         });
 
-
         const mailOptions = {
             from: process.env.EMAIL_SHOP_OWNER,
-            to: 'nestibry@gmail.com',
-            subject: 'Hello from Nodemailer! - Emailed Invoice!',
-            text: 'This is a test email sent using Nodemailer. Using an environment variable',
+            to: userData.email,
+            subject: 'Hello from the Antique Shop! - Automated Email Invoice Service',
+            text: 'This is a test email sent using Nodemailer. Thanks for your interest in the Antique Shop. Our invoicing system is currently being worked on.',
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -115,9 +114,7 @@ router.post('/invoice', async (req, res) => {
             }
         });
 
-
         res.status(200).json({ status: "success", message: req.body });
-
 
     } catch (err) {
         res.status(400).json(err);
