@@ -86,8 +86,8 @@ router.get('/cart', withAuth, async (req, res) => {
         //     ...user,
         //     logged_in: true
         // });
-
-        const cartProductIDs = [ 1, 6, 7];
+        console.log("This is req.session.cart: " + req.session.cart);
+        const cartProductIDs = req.session.cart;
 
         // Find all records and include other model data
         const data = await Product.findAll({
