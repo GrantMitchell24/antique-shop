@@ -4,6 +4,7 @@ const { User } = require('../../models');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
+// User Signup
 router.post('/', async (req, res) => {
     try {
         const userData = await User.create(req.body);
@@ -19,6 +20,8 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+// User Login
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
@@ -51,6 +54,8 @@ router.post('/login', async (req, res) => {
     }
 });
 
+
+// User logout
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
@@ -61,6 +66,8 @@ router.post('/logout', (req, res) => {
     }
 });
 
+
+// User Cart
 router.post('/cart', async (req, res) => {
     try {
 
@@ -84,6 +91,8 @@ router.post('/cart', async (req, res) => {
     }
 });
 
+
+// User clicked Email Invoice
 router.post('/invoice', async (req, res) => {
     try {
 
