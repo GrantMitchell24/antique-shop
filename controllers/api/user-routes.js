@@ -63,7 +63,11 @@ router.post('/cart', async (req, res) => {
 
         console.log(req.body.id);
         req.session.save(() => {
-            req.session.cart = req.body.id;
+            if(!req.session.cart){
+                req.session.cart = req.body.id;
+            } else {
+                req.session.cart = [...req.session?.cart, req.body.id];
+            }
             
             res.status(200).json({status: "success", message: req.session.cart});
         });
