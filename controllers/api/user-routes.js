@@ -61,11 +61,13 @@ router.post('/logout', (req, res) => {
 router.post('/cart', async (req, res) => {
     try {
 
-        console.log(req.body);
-        // req.session.save(() => {
-        // });
+        console.log(req.body.id);
+        req.session.save(() => {
+            req.session.cart = req.body.id;
+            
+            res.status(200).json({status: "success", message: req.session.cart});
+        });
 
-        res.status(200).json("successfully completed post /api/users/cart route");
 
     } catch (err) {
         res.status(400).json(err);
