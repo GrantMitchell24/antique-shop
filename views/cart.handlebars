@@ -1,13 +1,8 @@
 <div class="cart" style="max-width: 30rem;">
 
   <h2>CART</h2>
-
+  
 </div>
-{{!-- <div class="product-card" style="max-width: 30rem;">
-
-  <h2>product</h2>
-
-</div> --}}
 
 {{#if cart}}
 <section>
@@ -31,13 +26,10 @@
     {{/each}}
 
 </section>
-
 <script src="./js/email-invoice.js"></script>
 
 {{else}}
-
 <div class="total" style="max-width: 30rem;">
   <h4>No items in the cart.</h4>
 </div>
-
 {{/if}}
